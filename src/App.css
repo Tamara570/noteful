@@ -1,44 +1,24 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  
 }
 
 .App-header {
-  background-color:grey;
-  min-height: 10vh;
+  background-color:rgb(8, 53, 121);
+  font-size: 20px;
+  min-height: 9mm;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
 }
 
 .App-header a {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
-.App-link {
-  color: black;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 
 .Sidebar {
   box-sizing: border-box;
@@ -46,16 +26,16 @@
   display: inline-block;
   float: left;
   text-align: left;
-  padding: 1rem;
-  padding-bottom: 2rem;
-  min-height: 80vh;
+  padding: 5mm;
+  padding-bottom: 2mm;
+  min-height: 80mm;
 }
 
 .Main {
   box-sizing: border-box;
-  padding: 1rem;
-  padding-left: 3rem;
-  width: 66%;
+  padding: 2mm;
+  padding-left: 15mm;
+  width: 50%;
   display: inline-block;
   float: left;
   text-align: left;
@@ -69,9 +49,9 @@
 .Note {
   display: block;
   box-sizing: border-box;
-  padding: .5rem;
-  margin-bottom: .5rem;
-  border: 1px solid lightgray;
+  padding: 4mm;
+  margin-bottom: .5mm;
+  border: 1px solid black;
 }
 
 .folder.selected {

@@ -1,11 +1,11 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
 import './App.css';
 import STORE from './dummy-store'
 import NoteListNav from './NoteListNav/NoteListNav'
-import NoteListMain from './NoteListMain/NoteListMain'
-import NotePageMain from './NotePageMain/NotePageMain'
+import NoteList from './NoteList/NoteList'
+import NotePage from './NotePage/NotePage'
 import NotePageNav from './NotePageNav/NotePageNav'
-import { Route, Switch, Link } from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -17,8 +17,7 @@ class App extends React.Component {
           <h1><Link to={'/'}>Noteful</Link></h1>
         </header>
 
-        <aside>
-          
+        <sidebar>
           <Route
             exact
             path='/'
@@ -49,7 +48,7 @@ class App extends React.Component {
               )
             }}
           />
-        </aside>
+        </sidebar>
 
 
         <main>
@@ -57,7 +56,7 @@ class App extends React.Component {
             exact
             path='/'
             render={() =>
-              <NoteListMain notes={this.state.notes} />
+              <NoteList notes={this.state.notes} />
             }
           />
           <Route
@@ -66,7 +65,7 @@ class App extends React.Component {
             render={(props) => {
               return (
             
-                <NoteListMain
+                <NoteList
                   notes={this.state.notes.filter(
                     note => note.folderId === props.match.params.folderId
                   )}
@@ -82,7 +81,7 @@ class App extends React.Component {
                 note => note.id === props.match.params.noteId
               )
               return (
-                <NotePageMain {...selectedNote}/>
+                <NotePage {...selectedNote}/>
                 
               )
             }}
