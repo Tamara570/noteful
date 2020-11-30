@@ -1,4 +1,5 @@
 export default {
-    // API_ENDPOINT: 'https://noteful-tam-app.herokuapp.com/api'
-    API_ENDPOINT: 'http://localhost:8000/api'
-  }
+  // API_ENDPOINT: "http://postgres@localhost/noteful",
+  API_ENDPOINT: 'http://localhost:9090/api'
+
+}

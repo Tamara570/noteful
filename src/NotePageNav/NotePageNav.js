@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NoteContext from '../NoteContext'
-import { findNote, findFolder } from '../notes-helpers'
+import { findNote, findFolder } from '../../src/note-helpers'
 
 class NotePageNav extends React.Component {
   static defaultProps = {
@@ -18,14 +18,14 @@ class NotePageNav extends React.Component {
     const { notes, folders, } = this.context
     const { noteId } = this.props.match.params
     const note = findNote(notes, noteId) || {}
-    const folder = findFolder(folders, note.folderId)
+    const folder = findFolder(folders, note.folder_Id)
 
     return (
       <div className="Sidebar">
         <Link to='/'>Go Back</Link>
         {folder && (
           <h3 className='NotePageNav__folder-name'>
-            {folder.name}
+            {folder.folder_name}
           </h3>
         )}
       </div>

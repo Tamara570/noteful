@@ -37,7 +37,7 @@
   padding-left: 15mm;
   width: 50%;
   display: inline-block;
-  float: left;
+  /* float: left; */
   text-align: left;
 }
 
