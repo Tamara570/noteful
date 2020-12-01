@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import NoteContext from '../NoteContext'
 import PropTypes from 'prop-types'
 import config from '../config'
+import  {withRouter } from 'react-router-dom'
 import './Note.css'
 
 
@@ -59,6 +60,7 @@ class Note extends React.Component {
         }
         this.context.deleteNote(noteId)
         this.props.onDeleteNote(noteId)
+        this.props.history.goBack()
         return res.json()
       })
       .catch(error => {
@@ -94,4 +96,4 @@ class Note extends React.Component {
   }
 }
 
-export default Note;
+export default withRouter(Note);
