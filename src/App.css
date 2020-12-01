@@ -4,17 +4,19 @@
 }
 
 .App-header {
-  background-color:rgb(8, 53, 121);
+  background-color: rgba(194, 159, 63, 0);
   font-size: 20px;
   min-height: 9mm;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 10px;
 }
 
 .App-header a {
   color: rgb(255, 255, 255);
+  text-decoration: none;
 }
 
 
@@ -28,7 +30,7 @@
   text-align: left;
   padding: 5mm;
   padding-bottom: 2mm;
-  min-height: 80mm;
+  min-height: 90mm;
 }
 
 .Main {
@@ -51,10 +53,21 @@
   box-sizing: border-box;
   padding: 4mm;
   margin-bottom: .5mm;
-  border: 1px solid black;
+  border: 3px solid rgba(80, 79, 79, 0.59);
 }
 
 .folder.selected {
   color:blue;
   font-weight: bold;
+}
+.Link {
+  align-items: center;
+  height: 35px;
+  width: 100px;
+  background-color: #5a80b8ad;    
+  border: 0;
+  box-shadow: none;
+  border-radius: 0px;
+  color: white;
+  margin: 15px;
 }

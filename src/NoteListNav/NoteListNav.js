@@ -33,6 +33,7 @@ class NoteListNav extends React.Component {
           tag={Link}
           to='/add-folder'
           type='button'
+          className="Links"
         >
           New Folders
         </Link>

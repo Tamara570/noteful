@@ -1,0 +1,20 @@
+.Note {
+    margin: 20px 60px;
+}
+
+button {
+    align-items: center;
+    height: 35px;
+    width: 100px;
+    background-color: #5a80b8ad;    
+    border: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    color: white;
+    margin: 15px;
+}
+
+.name {
+    text-decoration: none;
+
+}

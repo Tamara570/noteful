@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NoteForm from '../NoteForm/NoteForm'
 import NoteContext from '../NoteContext'
+import PropTypes from 'prop-types'
 import config from '../config'
 
 export default class AddNote extends Component {
@@ -10,6 +11,11 @@ export default class AddNote extends Component {
     },
   }
   static contextType = NoteContext;
+
+  static propTypes = {
+    history: PropTypes.any.isRequired
+  }
+ 
 
   handleSubmit = e => {
     e.preventDefault()
@@ -65,7 +71,7 @@ export default class AddNote extends Component {
             <select id='note-folder-select' name='note-folder-id'>
               <option value={null}>...</option>
               {folders.map(folder =>
-                <option key={folder.id} value={folder.id}>
+                <option key={folder.id} value={folder.id} required>
                   {folder.folder_name}
                 </option>
               )}

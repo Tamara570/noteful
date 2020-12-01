@@ -10,6 +10,7 @@ import NoteContext from './NoteContext'
 import AddNote from './AddNote/addNote'
 import AddFolder from './AddFolder/addFolder'
 import config from './config'
+import ErrorBoundary from './ErrorBoundary/error'
 
 
 class App extends Component {
@@ -84,11 +85,12 @@ class App extends Component {
 
     return (
       <NoteContext.Provider value={contextValue}>
+        <ErrorBoundary>
         <div className="App">
           <header className="App-header">
             <h1><Link to={'/'}>Noteful</Link></h1>
           </header>
-            <sidebar>
+            <nav>
               {['/', '/folders/:folder_Id'].map(path => (
                 <Route
                     exact
@@ -98,7 +100,7 @@ class App extends Component {
                 />
               ))}
               <Route
-                path='/notes/:note-id'
+                path='/notes/:noteId'
                 component={NotePageNav}
               />
               <Route
@@ -109,7 +111,7 @@ class App extends Component {
                 path='/add-note'
                 component={NotePageNav}
               />
-            </sidebar>
+            </nav>
 
             <main>
               {['/', '/folders/:folder_id'].map(path => (
@@ -121,7 +123,7 @@ class App extends Component {
                 />
               ))}
               <Route
-                path='/notes/:note-Id'
+                path='/notes/:noteId'
                 component={NotePage}
               />
               <Route
@@ -134,6 +136,7 @@ class App extends Component {
               />
             </main>
         </div>
+        </ErrorBoundary>
       </NoteContext.Provider>
     );
   }

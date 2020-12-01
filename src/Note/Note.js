@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NoteContext from '../NoteContext'
+import PropTypes from 'prop-types'
+import config from '../config'
+import './Note.css'
 
 
 
@@ -22,9 +25,18 @@ function formatDate(date) {
 class Note extends React.Component {
   static defaultProps ={
     onDeleteNote: () => {},
+    history: {
+      push: () => { }
+    },
   }
-
   
+
+  static propTypes = {
+    handleClickDelete: PropTypes.any, 
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    modified: PropTypes.string
+}
 
   state = {
     loading: false
@@ -32,22 +44,47 @@ class Note extends React.Component {
 
   static contextType = NoteContext;
 
-  
+  handleClickDelete = (e) => {
+    e.preventDefault()
+    const noteId = this.props.id
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(res => {
+        if (!res.ok){
+          return res.json().then(e => Promise.reject(e))
+        }
+        this.context.deleteNote(noteId)
+        this.props.onDeleteNote(noteId)
+        return res.json()
+      })
+      .catch(error => {
+        console.error({ error })
+      })
+      console.log(this.props)
+
+      // this.props.history.push(`/`)
+  }
+
 
   render() {
     const modified = formatDate(new Date(this.props.modified));
-    const { name, id } = this.props;
-    // console.log(modified)
+    const { name, id, } = this.props;
+    // console.log(onDeleteNote)
     return (
       <li className="Note">
-        <Link to={`/notes/${id}`}>{name}</Link>
+        <Link to={`/notes/${id}`} className="name">{name}</Link>
         <div>
           <p>Last modified: {modified}</p>
 
           <button
             className='delete'
             type='button'
-            onClick={() => this.props.handleClickDelete(id)}
+            onClick={this.handleClickDelete}
+            to="/"
           >
             Delete Note
           </button>
@@ -55,7 +92,6 @@ class Note extends React.Component {
       </li>
     );
   }
-
 }
 
 export default Note;

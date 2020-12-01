@@ -3,6 +3,8 @@ import NoteContext from '../NoteContext'
 import { findNote } from '../note-helpers'
 import Note from '../Note/Note';
 import PropTypes from 'prop-types'
+import "./NotePage.css"
+
 
 class NotePageMain extends React.Component {
   static defaultProps = {
@@ -15,38 +17,41 @@ class NotePageMain extends React.Component {
   }
   static contextType = NoteContext
 
+  // static propTypes = {
+  //   match: {
+  //     params:
+  //       { noteId: PropTypes.string }
+  //   },
+  //     history: PropTypes.any
+  // }
+
   static propTypes = {
-    match: {
-      params:
-        { noteId: PropTypes.string }
-    },
-    history: PropTypes.any
+    history: PropTypes.any.isRequired,
+    match: PropTypes.any.isRequired
   }
 
-  handleDeleteNote = (noteId) => {
+  handleDeleteNote = () => {
     this.props.history.push(`/`)
   }
 
   render() {
 
     const { notes = [] } = this.context
-    console.log(notes)
     const { noteId } = this.props.match.params
-    console.log(this.props.match.params)
     const note = findNote(notes, noteId) || { content: '' }
-    console.log(note)
+    console.log(findNote(notes, noteId))
     
     return (
-      <div className="Main">
+      <div className="Note_Section">
         <Note
-          id={noteId}
+          id={note.id}
           name={note.note_name}
           modified={note.date_created}
-          onDeleteNote={this.handleDeleteNote(noteId)}
-        />
+          onClick={() => this.handleDeleteNote}
+          />
         <div className='NotePage_content'>
           {note.content.split(/\n \r|\n/).map((para, i) =>
-            <p key={i}>{para}</p>
+            <p key={i}>Note Content: {para}</p>
           )}
         </div>
       </div>
