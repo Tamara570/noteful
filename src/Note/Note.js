@@ -66,16 +66,12 @@ class Note extends React.Component {
       .catch(error => {
         console.error({ error })
       })
-      console.log(this.props)
-
-      // this.props.history.push(`/`)
   }
 
 
   render() {
     const modified = formatDate(new Date(this.props.modified));
     const { name, id, } = this.props;
-    // console.log(onDeleteNote)
     return (
       <li className="Note">
         <Link to={`/notes/${id}`} className="name">{name}</Link>
